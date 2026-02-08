@@ -1,13 +1,21 @@
+import asyncio
 import json
 from telegram import Update
-from telegram.ext import ContextTypes
-from src.operations import process
+from src.main import prepare_application
 
 
-async def main(event: dict) -> dict:
-    body = json.loads(event["body"])
-    update = Update.de_json(body)
+def main(event: dict[str, object], *args) -> dict:
+    application = prepare_application()
 
-    await process.query_callback(update, ContextTypes.DEFAULT_TYPE)  # type: ignore
+    asyncio.run(application.initialize())
+
+    update = Update.de_json(
+        json.loads(event["body"]),
+        bot=application.bot,
+    )
+
+    asyncio.run(application.process_update(update))
+
+    asyncio.run(application.shutdown())
 
     return {"statusCode": 200, "body": json.dumps("OK")}
