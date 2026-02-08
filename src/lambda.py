@@ -10,7 +10,7 @@ def main(event: dict[str, object], *args) -> dict:
     asyncio.run(application.initialize())
 
     update = Update.de_json(
-        json.loads(event["body"]),
+        json.loads(event["body"]),  # type: ignore
         bot=application.bot,
     )
 
