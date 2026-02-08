@@ -22,15 +22,15 @@ if not BOT_TOKEN_NULLABLE:
 
 BOT_TOKEN: str = BOT_TOKEN_NULLABLE
 
-if not SECRET_NULLABLE:
+if not SECRET_NULLABLE and not USE_POOLING:
     raise ValueError("Generate a password-like string and set it as the SECRET environment variable.")
 
-SECRET: str = SECRET_NULLABLE
+SECRET: str = SECRET_NULLABLE if SECRET_NULLABLE else ""
 
-if not WEBHOOK_BASE_URL_NULLABLE:
+if not WEBHOOK_BASE_URL_NULLABLE and not USE_POOLING:
     raise ValueError(
         "Set the WEBHOOK_BASE_URL environment variable to the base URL of your webhook endpoint, "
         "e.g. https://yourdomain.com; https://yourdomain.com/webhook;",
     )
 
-WEBHOOK_BASE_URL: str = WEBHOOK_BASE_URL_NULLABLE
+WEBHOOK_BASE_URL: str = WEBHOOK_BASE_URL_NULLABLE if WEBHOOK_BASE_URL_NULLABLE else ""
