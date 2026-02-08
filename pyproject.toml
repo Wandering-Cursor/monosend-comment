@@ -1,0 +1,30 @@
+[project]
+name = "monosend-comment"
+version = "0.1.0"
+description = "An Inline Telegram Bot that adds comments to your send.monobank.ua links"
+readme = "README.md"
+requires-python = ">=3.14, <3.15"
+dependencies = [
+    "python-telegram-bot==22.6",
+    "ruff>=0.15.0",
+]
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+target-version = "py314"
+select = [
+    "E",
+    "F",
+    "W",
+    "ERA",
+    "YTT",
+    "ASYNC",
+    "S",
+    "BLE",
+    "FBT",
+    "B",
+    "A",
+    "COM",
+]

@@ -1,0 +1,15 @@
+{
+	"name": "Mono Send with Comment - Dev Container",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"postAttachCommand": "uv sync",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"charliermarsh.ruff"
+			]
+		}
+	}
+}
