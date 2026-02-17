@@ -11,7 +11,7 @@ def translate(
     string: "en.Translation",
     update: "telegram.Update | None" = None,
     language_code: str | None = None,
-    **kwargs: str,
+    **kwargs: str | object,
 ) -> str:
     """
     Translates a given string to the user's language, if possible.

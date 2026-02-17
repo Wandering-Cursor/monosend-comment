@@ -2,6 +2,7 @@ import asyncio
 from telegram.ext import (
     Application,
     InlineQueryHandler,
+    CommandHandler,
 )
 
 from src.settings import BOT_TOKEN, LISTEN_IP, LISTEN_PORT, WEBHOOK_BASE_URL, SECRET, USE_POOLING
@@ -20,6 +21,13 @@ def prepare_application():
     application.add_handler(
         InlineQueryHandler(
             process.query_callback,
+        ),
+    )
+
+    application.add_handler(
+        CommandHandler(
+            "add",
+            process.add_command_callback,
         ),
     )
 

@@ -33,4 +33,6 @@ if not WEBHOOK_BASE_URL_NULLABLE and not USE_POOLING:
         "e.g. https://yourdomain.com; https://yourdomain.com/webhook;",
     )
 
+S3_BUCKET_NAME: str | None = os.getenv("S3_BUCKET_NAME", None)
+
 WEBHOOK_BASE_URL: str = WEBHOOK_BASE_URL_NULLABLE if WEBHOOK_BASE_URL_NULLABLE else ""
