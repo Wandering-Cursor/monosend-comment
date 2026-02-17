@@ -19,3 +19,19 @@ class Translation(StrEnum):
     CORRECT_QUERY_MESSAGE = "Запит на оплату:\nСума: {amount}\nКоментар: {comment}\n\nПосилання: {link}"
 
     ITEM_UNSPECIFIED = "Не вказано"
+
+    ADD_COMMAND_MESSAGE = "Додано посилання:\nНазва: {title}\nURL: {url}"
+    ADD_COMMAND_INVALID_MESSAGE = (
+        "Невірне посилання. Убедитесь, что оно начинается с send.monobank.ua и попробуйте снова."
+    )
+    ADD_COMMAND_S3_BUCKET_NOT_CONFIGURED_MESSAGE = (
+        "Бот не було налаштовано для цієї дії. Будь ласка, зв'яжіться з адміністратором."
+    )
+
+    ADD_LINK_TITLE_FORMAT = "До: {path}"
+
+    LIST_LINK_TITLE = "#{index} {title}"
+    LIST_LINK_DESCRIPTION = "Приклад використання:\n{index} 125 На вільніше завтра"
+    LIST_LINK_MESSAGE = (
+        "Посилання #{index} ({title}):\n\nURL: {url}\nP.S. Вам не слід було використовувати цю кнопку таким чином 🙃"
+    )

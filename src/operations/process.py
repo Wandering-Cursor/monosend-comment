@@ -323,13 +323,13 @@ async def add_command_callback(update: Update, context: CallbackContext) -> None
         return
 
     link_match = re.match(
-        r"^/add\s+(?P<link>send\.monobank\.ua\/\S+)$",
+        r"^/add\s+(https?\://)?(?P<link>send\.monobank\.ua\/\S+)$",
         update.message.text,
         flags=re.IGNORECASE,
     )
 
     title_match = re.match(
-        r"^/add\s+(?P<link>send\.monobank\.ua\/\S+)\s+(?P<title>.+)$",
+        r"^/add\s+(https?\://)?(?P<link>send\.monobank\.ua\/\S+)\s+(?P<title>.+)$",
         update.message.text,
         flags=re.IGNORECASE,
     )
@@ -373,6 +373,7 @@ async def add_command_callback(update: Update, context: CallbackContext) -> None
         translate(
             Translation.ADD_COMMAND_MESSAGE,
             update=update,
-            link=link_object,
+            title=link_object["title"],
+            url=link_object["url"],
         ),
     )

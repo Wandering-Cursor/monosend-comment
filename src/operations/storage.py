@@ -12,7 +12,6 @@ def s3_client() -> Any:
 
     return boto3.client(
         "s3",
-        Bucket=S3_BUCKET_NAME,
     )
 
 
@@ -20,7 +19,10 @@ def get_links(chat_id: int | str) -> list[Link]:
     s3 = s3_client()
 
     try:
-        links = s3.get_object(Key=str(chat_id))
+        links = s3.get_object(
+            Bucket=S3_BUCKET_NAME,
+            Key=str(chat_id),
+        )
     except ClientError:
         return []
 
@@ -42,4 +44,5 @@ def add_link(chat_id: int | str, link: Link) -> None:
     s3.put_object(
         Key=str(chat_id),
         Body=json.dumps([item for item in links]),
+        Bucket=S3_BUCKET_NAME,
     )
